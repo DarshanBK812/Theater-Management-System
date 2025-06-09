@@ -50,5 +50,7 @@ public class TicketController {
 	public ResponseStructure<Ticket> addExistsingTicketToExistsingPayment(@RequestParam int payemntId ,@RequestParam int ticketId) {
 		return ticketService.addExistsingTicketToExistsingPayment(payemntId, ticketId);
 	}
+	
+	
 
 }

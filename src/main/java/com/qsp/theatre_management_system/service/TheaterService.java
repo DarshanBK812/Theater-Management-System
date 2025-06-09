@@ -72,12 +72,29 @@ public class TheaterService {
 	}
 
 
-	public Theater addExistingBranchToExistingTheater(int branchId, int theaterId) {
-		return theaterDao.addExistingBranchToExistingTheater(branchId, theaterId);
+	public ResponseStructure<Theater> addExistingBranchToExistingTheater(int branchId, int theaterId) {
+		responseStructure.setMessage("Branch is added to Theater successfully in the DB");
+		responseStructure.setStatuscode(HttpStatus.OK.value());
+		responseStructure.setData(theaterDao.addExistingBranchToExistingTheater(branchId, theaterId));
+		return responseStructure;
+
 	}
 
-	public Theater addNewBranchToExistedTheater(Branch newBranch, int theaterId) {
-		return theaterDao.addNewBranchToExistedTheater(newBranch, theaterId);
+	public ResponseStructure<Theater> addNewBranchToExistedTheater(Branch newBranch, int theaterId) {
+		responseStructure.setMessage("new Branch is added to Theater successfully in the DB");
+		responseStructure.setStatuscode(HttpStatus.OK.value());
+		responseStructure.setData(theaterDao.addNewBranchToExistedTheater(newBranch, theaterId));
+		return responseStructure;
+		
 	}
+	
+	public ResponseStructure<Theater> addExistingViewrToExistingThater(int theaterId, int viwerId) {
+		responseStructure.setMessage("new Branch is added to Theater successfully in the DB");
+		responseStructure.setStatuscode(HttpStatus.OK.value());
+		responseStructure.setData(theaterDao.addExistingViewrToExistingThater(theaterId, viwerId));
+		return responseStructure;
+		
+	}
+
 
 }

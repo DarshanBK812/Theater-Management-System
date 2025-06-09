@@ -10,18 +10,21 @@ import org.springframework.stereotype.Service;
 import com.qsp.theatre_management_system.dto.Branch;
 import com.qsp.theatre_management_system.dto.Owner;
 import com.qsp.theatre_management_system.dto.Theater;
+import com.qsp.theatre_management_system.dto.Viewer;
 import com.qsp.theatre_management_system.repo.TheaterRepo;
-
+import com.qsp.theatre_management_system.repo.ViewerRepo;
 
 @Repository
 public class TheaterDao {
 
-	
 	@Autowired
 	TheaterRepo theaterRepo;
 
 	@Autowired
 	BranchDao branchDao;
+
+	@Autowired
+	ViewerDao viewerDao;
 
 	public Theater saveTheater(Theater theater) {
 		return theaterRepo.save(theater);
@@ -29,10 +32,9 @@ public class TheaterDao {
 
 	public Theater fetchTheaterById(int theaterId) {
 		Optional<Theater> theater = theaterRepo.findById(theaterId);
-		if(theater.isEmpty()) {
+		if (theater.isEmpty()) {
 			return null;
-		}
-		else {
+		} else {
 			return theater.get();
 		}
 	}
@@ -55,22 +57,20 @@ public class TheaterDao {
 		theaterRepo.delete(theater);
 		return theater;
 	}
-	
-	public Theater updateTheaterById(int oldTheaterId , Theater  newTheater) {
+
+	public Theater updateTheaterById(int oldTheaterId, Theater newTheater) {
 		newTheater.setTheaterId(oldTheaterId);
 		theaterRepo.save(newTheater);
 		return newTheater;
 	}
 
 	public Theater addExistingBranchToExistingTheater(int branchId, int theaterId) {
-
 		Theater theater = fetchTheaterById(theaterId);
 		Branch branch = branchDao.fetchBranchById(branchId);
 		List<Branch> list = theater.getBranch();
 		list.add(branch);
 		theater.setBranch(list);
 		return theaterRepo.save(theater);
-
 	}
 
 	public Theater addNewBranchToExistedTheater(Branch newBranch, int theaterId) {
@@ -79,7 +79,16 @@ public class TheaterDao {
 		list.add(newBranch);
 		theater.setBranch(list);
 		return saveTheater(theater);
+	}
 
+	public Theater addExistingViewrToExistingThater(int theaterId, int viwerId) {
+		Theater theater = fetchTheaterById(theaterId);
+		Viewer viewer = viewerDao.fetchViewerById(viwerId);
+		List<Viewer> list = theater.getViewers();
+		list.add(viewer);
+		theater.setViewers(list);
+		
+		return saveTheater(theater);
 	}
 
 }

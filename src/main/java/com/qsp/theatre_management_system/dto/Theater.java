@@ -26,6 +26,9 @@ public class Theater {
 	@OneToMany(cascade =  CascadeType.ALL)
 	private List<Branch> branch;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Viewer> viewers;
+	
 	public int getTheaterId() {
 		return theaterId;
 	}
@@ -73,6 +76,16 @@ public class Theater {
 	public void setBranch(List<Branch> branch) {
 		this.branch = branch;
 	}
+
+	public List<Viewer> getViewers() {
+		return viewers;
+	}
+
+	public void setViewers(List<Viewer> viewers) {
+		this.viewers = viewers;
+	}
+	
+	
 	
 
 }

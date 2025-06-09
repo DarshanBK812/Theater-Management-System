@@ -50,12 +50,18 @@ public class TheaterController {
 	}
 
 	@PostMapping("/addExistingBranchToExistingTheater")
-	public Theater addExistingBranchToExistingTheater(@RequestParam int branchId, @RequestParam int theaterId) {
+	public ResponseStructure<Theater> addExistingBranchToExistingTheater(@RequestParam int branchId, @RequestParam int theaterId) {
 		return theaterService.addExistingBranchToExistingTheater(branchId, theaterId);
 	}
 
 	@PostMapping("/addNewBranchToExistedTheater")
-	public Theater addNewBranchToExistedTheater(@RequestBody Branch newBranch, @RequestParam int theaterId) {
+	public ResponseStructure<Theater> addNewBranchToExistedTheater(@RequestBody Branch newBranch, @RequestParam int theaterId) {
 		return theaterService.addNewBranchToExistedTheater(newBranch, theaterId);
 	}
+	
+	@PostMapping("/addExistingViewrToExistingThater")
+	public ResponseStructure<Theater> addExistingViewrToExistingThater(@RequestParam int theaterId,@RequestParam int viwerId) {
+		return theaterService.addExistingViewrToExistingThater(theaterId, viwerId);
+	}
+
 }
