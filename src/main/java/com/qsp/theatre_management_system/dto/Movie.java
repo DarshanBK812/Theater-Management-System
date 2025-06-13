@@ -1,11 +1,16 @@
 package com.qsp.theatre_management_system.dto;
 
 import java.sql.Time;
+import java.util.List;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Movie {
@@ -18,6 +23,11 @@ public class Movie {
 	private String movieGener;
 	private String movieType;
 	private String movieLanguage;
+
+	
+	@OneToMany
+	@Cascade(CascadeType.ALL)
+	private List<Ticket> ticket;
 
 	public int getMovieId() {
 		return movieId;
@@ -66,5 +76,15 @@ public class Movie {
 	public void setMovieLanguage(String movieLanguage) {
 		this.movieLanguage = movieLanguage;
 	}
+
+	public List<Ticket> getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(List<Ticket> ticket) {
+		this.ticket = ticket;
+	}
+	
+	
 
 }

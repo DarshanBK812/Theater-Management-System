@@ -54,7 +54,7 @@ public class OwnerService {
 
 	public ResponseStructure<Owner> deleteOwnerByid(int ownerId) {
 
-		responseStructure.setMessage("Owner fetched successfully from the DB");
+		responseStructure.setMessage("Owner delete successfully from the DB");
 		responseStructure.setStatuscode(HttpStatus.OK.value());
 		responseStructure.setData(ownerDao.deleteOwnerById(ownerId));
 		return responseStructure;

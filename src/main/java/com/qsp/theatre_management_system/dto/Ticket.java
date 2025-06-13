@@ -1,5 +1,7 @@
 package com.qsp.theatre_management_system.dto;
 
+import java.util.List;
+
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class  Ticket {
+public class Ticket {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +27,8 @@ public class  Ticket {
 
 	@OneToOne
 	@Cascade(CascadeType.ALL)
-	Payment payment;
-	
-	
-	
+	private Payment payment;
+
 	public int getTicketId() {
 		return ticketId;
 	}
@@ -67,9 +68,5 @@ public class  Ticket {
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
-	
-	
-	
-	
 
 }

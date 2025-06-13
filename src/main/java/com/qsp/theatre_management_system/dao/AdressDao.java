@@ -16,16 +16,16 @@ public class AdressDao {
 	AdressRepo adressRepo;
 
 	public Adress saveAdress(Adress adress) {
+
 		return adressRepo.save(adress);
 	}
 
 	public Adress fetchAdressById(int adressId) {
 //		return adressRepo.findById(adressId).get();
-		Optional<Adress> adress =  adressRepo.findById(adressId);
-		if(adress.isEmpty()) {
+		Optional<Adress> adress = adressRepo.findById(adressId);
+		if (adress.isEmpty()) {
 			return null;
-		}
-		else {
+		} else {
 			return adress.get();
 		}
 	}
@@ -39,8 +39,8 @@ public class AdressDao {
 		adressRepo.delete(adress);
 		return adress;
 	}
-	
-	public Adress updateAdressById(int oldAdressId , Adress adress) {
+
+	public Adress updateAdressById(int oldAdressId, Adress adress) {
 		adress.setAdressId(oldAdressId);
 		adressRepo.save(adress);
 		return adress;

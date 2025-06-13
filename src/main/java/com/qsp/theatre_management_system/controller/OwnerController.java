@@ -32,7 +32,7 @@ public class OwnerController {
 		return ownerService.fetchOwnerById(ownerId);
 	}
 
-	@DeleteMapping("/deleteOnerById")
+	@DeleteMapping("/deleteOwnerById")
 	public ResponseStructure<Owner> deleteOnerById(@RequestParam int onwerId) {
 		return ownerService.deleteOwnerByid(onwerId);
 	}
@@ -49,7 +49,7 @@ public class OwnerController {
 	}
 
 	@PutMapping("/updateOwnerById")
-	public ResponseStructure<Owner> updateOwnerById(@RequestParam int oldOwnerId,@RequestBody Owner owner) {
+	public ResponseStructure<Owner> updateOwnerById(@RequestParam int oldOwnerId, @RequestBody Owner owner) {
 		return ownerService.updateOwnerById(oldOwnerId, owner);
 
 	}

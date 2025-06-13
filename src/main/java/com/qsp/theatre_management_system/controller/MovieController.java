@@ -40,10 +40,23 @@ public class MovieController {
 	public ResponseStructure<Movie> deleteMovieById(@RequestParam int movieId) {
 		return movieService.deleteMovieById(movieId);
 	}
+	
 
 	@PutMapping("/updateMovieById")
-	public ResponseStructure<Movie> updateMovieById(@RequestParam int oldMovieId,@RequestBody Movie movie) {
+	public ResponseStructure<Movie> updateMovieById(@RequestParam int oldMovieId, @RequestBody Movie movie) {
 		return movieService.updateMovieById(oldMovieId, movie);
 	}
+
+	@PutMapping("/addExistingTicketToExictedMovie")
+	public ResponseStructure<Movie> addExistingTicketToExictedMovie(@RequestParam int movieId,
+			@RequestParam int ticketId) {
+		return movieService.addExistingTicketToExictedMovie(movieId, ticketId);
+	}
+	
+	@PutMapping("/updateMovieByName")
+	public ResponseStructure<Movie> updateMovieByName(@RequestParam String oldaName,@RequestBody Movie newMovie) {
+		return movieService.updateMovieByName(oldaName, newMovie);
+	}
+
 
 }

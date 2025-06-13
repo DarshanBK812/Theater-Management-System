@@ -25,22 +25,20 @@ public class OwnerDao {
 
 	public Owner fetchOwnerById(int ownerId) {
 		Optional<Owner> owner = ownerRepo.findById(ownerId);
+
 //		if (owner.isPresent()) {
 //			return owner.get();
 //		} else
 //			return null;
-		
+
 		if (owner.isEmpty()) {
-			
+
 			return null;
-			
+
 		} else {
-			
+
 			return owner.get();
 		}
-		
-		
-
 
 	}
 
@@ -69,7 +67,6 @@ public class OwnerDao {
 		Theater theater = theaterDao.fetchTheaterById(theaterId);
 		owner.setTheater(theater);
 		return saveOwner(owner);
-		
 
 	}
 

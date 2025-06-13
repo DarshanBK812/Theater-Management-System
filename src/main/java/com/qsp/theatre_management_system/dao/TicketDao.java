@@ -19,7 +19,7 @@ import jakarta.persistence.Entity;
 public class TicketDao {
 	@Autowired
 	TicketRepo ticketRepo;
-	
+
 	@Autowired
 	PaymentRepo paymentRepo;
 
@@ -49,15 +49,16 @@ public class TicketDao {
 	public Ticket updateTicketById(int oldTicketId, Ticket ticket) {
 		ticket.setTicketId(oldTicketId);
 		ticketRepo.save(ticket);
+		
 		return ticket;
 	}
-	
-	public Ticket addExistsingTicketToExistsingPayment(int payemntId , int titleId) {
+
+	public Ticket addExistsingTicketToExistsingPayment(int payemntId, int titleId) {
 		Ticket ticket = fetchTicketById(titleId);
 		Payment payment = paymentRepo.findById(titleId).get();
+		ticket.setPayment(payment);
 		return saveTicket(ticket);
-		
-	}
 
+	}
 
 }

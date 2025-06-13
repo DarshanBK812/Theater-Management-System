@@ -4,6 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.qsp.theatre_management_system.dto.Movie;
 
-public interface MovieRepo  extends JpaRepository<Movie, Integer>{
+
+public interface MovieRepo extends JpaRepository<Movie, Integer> {
+
+	Movie findMovieByName(String name);
 
 }
