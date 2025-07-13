@@ -1,4 +1,4 @@
-# 🎭 Theater Management System – Backend
+#  Theater Management System – Backend
 
 This is a **Backend REST API** for a **Theater Management System**, built using **Java**, **Spring Boot**, and **MySQL**. It handles various theater operations like managing owners, branches, theaters, employees, movies, tickets, payments, and more. CRUD operations are implemented for each entity. APIs are tested using **Postman**.
 
